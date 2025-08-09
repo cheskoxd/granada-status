@@ -39,7 +39,7 @@ const DraggableMarker = ({ position, onPositionChange }: { position: [number, nu
 
 const ReporteServicios = () => {
   const [location, setLocation] = useState<[number, number] | null>(null);
-  const [servicios, setServicios] = useState({ agua: true, luz: true, internet: true });
+  const [servicios, setServicios] = useState({ agua: true, luz: true, internet: true, temblor:false, inundacion: false });
   const [users, setUsers] = useState<Array<{lat: number; lng: number; servicios: typeof servicios}>>([]);
   const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(null);
   const [changeLoc, setChangeLoc] = useState<boolean>(false);
@@ -79,12 +79,12 @@ useEffect(() => {
     }
   }, [location, servicios]);
 
-  const handleChange = (service: 'agua' | 'luz' | 'internet') => {
+  const handleChange = (service: 'agua' | 'luz' | 'internet' | 'temblor' | 'inundacion') => {
     setServicios((prev) => ({ ...prev, [service]: !prev[service] }));
   };
 
-   const getMarkerIcon = (serviciosUsuario: { agua: boolean, luz: boolean, internet: boolean }) => {
-    const color = (!serviciosUsuario.agua || !serviciosUsuario.luz || !serviciosUsuario.internet) ? 'red' : 'green';
+   const getMarkerIcon = (serviciosUsuario: { agua: boolean, luz: boolean, internet: boolean, temblor: boolean, inundacion:boolean }) => {
+    const color = (!serviciosUsuario.agua || !serviciosUsuario.luz || !serviciosUsuario.internet || serviciosUsuario.temblor || serviciosUsuario.inundacion) ? 'red' : 'green';
     return L.divIcon({
       html: `<div style="background-color: ${color}; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white;"></div>`,
       className: '',
@@ -112,10 +112,10 @@ useEffect(() => {
     <div className="bg-white shadow-lg border-2 border-black rounded-lg p-6 max-w-md w-full">
       <h1 className="text-3xl font-extrabold mb-6 text-center text-black">Reporte de Servicios</h1>
       <div className="flex  gap-4 h-12 mb-6">
-        {['agua', 'luz', 'internet'].map((service) => (
+        {['agua', 'luz', 'internet', 'inundacion', 'temblor'].map((service) => (
           <button
             key={service}
-            onClick={() => handleChange(service as 'agua' | 'luz' | 'internet')}
+            onClick={() => handleChange(service as 'agua' | 'luz' | 'internet' | 'temblor' | 'inundacion')}
             className={`transition-colors flex-1  cursor-pointer duration-300 select-none px-5 py-3 rounded-md font-semibold text-white shadow-md 
               ${servicios[service as keyof typeof servicios] ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'}`}
           >
@@ -173,6 +173,18 @@ useEffect(() => {
                     <span className="text-2xl">📶</span>
                     <span className={user.servicios.internet ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
                       Internet: {user.servicios.internet ? 'Disponible' : 'No disponible'}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">⛰️</span>
+                    <span className={!user.servicios.temblor ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
+                      Temblor: {user.servicios.temblor ? 'Si lo senti' : 'No'}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">🌊</span>
+                    <span className={!user.servicios.inundacion ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
+                      Inundacion: {user.servicios.inundacion ? 'Me inundo' : 'No'}
                     </span>
                   </div>
                 </div>
