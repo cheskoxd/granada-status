@@ -110,20 +110,8 @@ useEffect(() => {
   return (
   <div className="min-h-screen bg-gradient-to-r from-blue-50 to-white flex flex-col items-center p-6">
     <div className="bg-white shadow-lg border-2 border-black rounded-lg p-6 max-w-md w-full">
-      <h1 className="text-3xl font-extrabold mb-6 text-center text-black">Reporte de Servicios</h1>
-      <div className="flex  gap-4 h-12 mb-6">
-        {['agua', 'luz', 'internet', 'inundacion', 'temblor'].map((service) => (
-          <button
-            key={service}
-            onClick={() => handleChange(service as 'agua' | 'luz' | 'internet' | 'temblor' | 'inundacion')}
-            className={`transition-colors flex-1  cursor-pointer duration-300 select-none px-5 py-3 rounded-md font-semibold text-white shadow-md 
-              ${servicios[service as keyof typeof servicios] ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'}`}
-          >
-            {service.toUpperCase() }
-            {/* {service.toUpperCase() }: {servicios[service as keyof typeof servicios] ? 'Sí' : 'No'} */}
-          </button>
-        ))}
-      </div>
+      <h1 className="text-3xl font-extrabold mb-6 text-center text-black">Mapa de area</h1>
+      
 
       {changeLoc && <div className="mb-6">
         <h2 className="text-lg font-semibold mb-2">Ajusta tu ubicación</h2>
@@ -156,7 +144,7 @@ useEffect(() => {
             <Popup>
               <div className="w-48">
                 <h3 className="font-bold text-lg mb-3 border-b border-gray-200 pb-2 text-center text-gray-800">Servicios</h3>
-                <div className="grid gap-2 w-full" >
+                <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">💧</span>
                     <span className={user.servicios.agua ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
@@ -195,6 +183,19 @@ useEffect(() => {
         </MapContainer>
         
       )}
+      <div className="flex flex-wrap  gap-2  mt-2 w-full">
+        {['agua', 'luz', 'internet', 'inundacion', 'temblor'].map((service) => (
+          <button
+            key={service}
+            onClick={() => handleChange(service as 'agua' | 'luz' | 'internet' | 'temblor' | 'inundacion')}
+            className={`transition-colors flex-1  cursor-pointer duration-300 select-none px-5 py-3 rounded-md font-semibold text-white shadow-md 
+              ${servicios[service as keyof typeof servicios] ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'}`}
+          >
+            {service.toUpperCase() }
+            {/* {service.toUpperCase() }: {servicios[service as keyof typeof servicios] ? 'Sí' : 'No'} */}
+          </button>
+        ))}
+      </div>
        {!changeLoc && <div className='flex flex-row gap-2 mt-2'>
         <button 
             className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-green-700" 
