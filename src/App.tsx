@@ -156,7 +156,7 @@ useEffect(() => {
             <Popup>
               <div className="w-48">
                 <h3 className="font-bold text-lg mb-3 border-b border-gray-200 pb-2 text-center text-gray-800">Servicios</h3>
-                <div className="flex flex-col gap-2">
+                <div className="grid gap-2 w-full" >
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">💧</span>
                     <span className={user.servicios.agua ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
