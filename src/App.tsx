@@ -110,7 +110,7 @@ useEffect(() => {
   return (
   <div className="min-h-screen bg-gradient-to-r from-blue-50 to-white flex flex-col items-center p-6">
     <div className="bg-white shadow-lg border-2 border-black rounded-lg p-6 max-w-md w-full">
-      <h1 className="text-3xl font-extrabold mb-6 text-center text-black">Mapa de area</h1>
+      <h1 className="text-3xl font-extrabold mb-6 text-center text-black">Mapa de tu area</h1>
       
 
       {changeLoc && <div className="mb-6">
