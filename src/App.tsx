@@ -148,7 +148,7 @@ useEffect(() => {
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">💧</span>
                     <span className={user.servicios.agua ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>
-                      Agua: {user.servicios.agua ? 'Disponible' : 'No disponible'}
+                      Awa: {user.servicios.agua ? 'Disponible' : 'No disponible'}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
