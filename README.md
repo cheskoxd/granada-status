@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+<img width="1190" height="417" alt="test3" src="https://github.com/user-attachments/assets/92fefac4-9938-46f8-a508-ea844e8d222f" />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# pockethost
+### Sponsored by https://pockethost.io. Instantly host your PocketBase projects.
+---
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+PocketHost is the multi-user, multi-tenant PocketBase server. Run hundreds, even thousands, of PocketBase instances at the same time on a single server or a global network.
 
-## Expanding the ESLint configuration
+Features:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Create unlimited PocketBase instances
+- Each instance runs on its own subdomain
+- Secure by default - Docker + automatic SSL
+- Custom domain (CNAME) support
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Quickstart
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+`npx pockethost serve`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scaling Up
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### `pockethost firewall`
+
+### `pockethost mothership`
+
+### `pockethost edge:daemon`
+
+### `pockethost edge:syslog`
+
+### `pockethost edge:ftp`
+
+## Other commands
+
+### `pockethost download`
+
+### `pockethost health`
+
+## Support
+
+PocketHost has a thriving [Discord community](https://discord.gg/nVTxCMEcGT).
